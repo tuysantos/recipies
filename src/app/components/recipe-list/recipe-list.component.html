@@ -1,3 +1,53 @@
-<p>
-  recipe-list works!
-</p>
+<div class="container recipe-list">
+  <div class="row">
+    <div class="col-sm-12">
+      <span id="spMainTitle1" class="spTitle">List of Recipes</span>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12" style="margin-bottom: 20px;">
+        <div class="top-content">
+            <button type="button" id="btnBack" class="btnRefresh-align btn btn-primary margin-15" (click)="goBack()">
+                <span class="glyphicon glyphicon-home">&nbsp;Back</span>
+            </button>
+      
+            <button type="button" id="btnRefresh2" class="btnRefresh-align btn btn-primary margin-15" (click)="manualRefresh(true)">
+                <span class="glyphicon glyphicon-refresh">&nbsp;Refresh</span>
+            </button>
+        </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <div class="recipe-title-list">Total Recipes ({{totalRecords}})</div>
+      <div class="recipe-list-wrapper">
+          <div *ngFor="let recipe of recipes$ | async">
+            <app-recipe 
+                [title]="recipe.title" 
+                [ingredients]="recipe.ingredients" 
+                [thumbnail]="recipe.thumbnail" 
+                [href]="recipe.href">
+            </app-recipe>
+          </div>
+      </div>
+      
+    </div>
+  </div>
+
+  <div class="row" id="rowFooter">
+      <div class="col-sm-12">
+        <app-refresh-data (refreshEvent)="refreshData($event)"></app-refresh-data>
+      </div>
+  </div>
+
+  <div class="row" [hidden]="totalRecords < 10">
+    <div class="col-sm-12">
+      <app-pagination 
+        [pageSize]="pageSize" 
+        [totalItems]="totalRecords" 
+        (pageChanged)="pageChanged($event)"></app-pagination>
+    </div>
+  </div>
+</div>

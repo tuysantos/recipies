@@ -1,0 +1,34 @@
+.recipe-container {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    border: 1px solid #000000;
+    border-radius: 10px;
+    background: #ffffff;
+    min-width: 100%;
+    display: inline-block;
+    padding: 20px;
+    margin-bottom: 20px;
+
+    .recipe-title {
+        text-align: left;
+        font-size: 18px;
+        color: #090979;
+    }
+    .recipe-other-recipes {
+        text-align: left;
+        color: #000000;
+    }
+    .recipe-url {
+        text-align: left;
+        font-size: 12px;
+        color: #090979;
+    }
+
+    .info-wrapper {
+        float: left;
+    }
+
+    .img-wrapper {
+        float: right;
+    }
+}

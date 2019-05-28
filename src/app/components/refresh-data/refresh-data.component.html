@@ -1,3 +1,12 @@
-<p>
-  refresh-data works!
-</p>
+<div class="container footer-wrapper">
+  <div class="footer-title">There is more data available. Press the 'Refresh' button to get it or press 'Cancel'</div>
+  <div class="footer-content">
+      <button type="button" id="btnCancel" class="btnRefresh-align btn btn-primary margin-15" (click)="updateData(false)">
+          <span class="glyphicon glyphicon-remove">&nbsp;Cancel</span>
+      </button>
+
+      <button type="button" id="btnRefresh" class="btnRefresh-align btn btn-primary margin-15" (click)="updateData(true)">
+          <span class="glyphicon glyphicon-refresh">&nbsp;Refresh</span>
+      </button>
+  </div>
+</div>
