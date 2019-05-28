@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
   selector: 'app-manage-ingredient',
@@ -7,9 +7,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ManageIngredientComponent implements OnInit {
 
+  @Output() addIngredientEvent: EventEmitter<string> = new EventEmitter<string>();
+  ingredient: string = "";
   constructor() { }
 
   ngOnInit() {
+  }
+
+  addIngredient(): void {
+    if(this.ingredient.trim().length > 0) {
+      this.addIngredientEvent.emit(this.ingredient);
+    }
+    this.ingredient = "";
   }
 
 }
