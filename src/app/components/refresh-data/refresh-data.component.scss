@@ -1,0 +1,28 @@
+.footer-wrapper {
+    background: #01c1f3;
+    padding: 20px;
+    border: 1px solid #01c1f3;
+    border-radius: 10px;
+    .footer-title {
+        font-family: Verdana, Geneva, Tahoma, sans-serif;
+        font-size: 16px;
+        text-align: left;
+        color: #000000;
+        display: block
+    }
+
+    .footer-content {
+        display: block;
+    }
+
+    button {
+        float: right;
+    }
+
+    .btnRefresh-align {
+        min-width: 50px;
+    }
+    .margin-15 {
+        margin-right: 15px
+    }
+}

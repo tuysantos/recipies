@@ -1,0 +1,33 @@
+.recipe-list {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 16px;
+    .spMainTitle {
+        text-align: center;
+    }
+    .recipe-title-list {
+        display: block;
+        text-align: center;
+        width: 100%;
+        background: #090979;
+        color: #ffffff;
+    }
+
+    .recipe-list-wrapper {
+        display: block;
+    }
+
+    .top-content {
+        display: block;
+        margin-bottom: 20px;
+        button, a {
+            float: right;
+        }
+    
+        .btnRefresh-align {
+            min-width: 50px;
+        }
+        .margin-15 {
+            margin-right: 15px
+        }
+    }
+}
