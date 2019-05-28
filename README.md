@@ -2,13 +2,15 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
 
+This test allow a user to click on one ingredint to display a list of recipes based on that ingredient.
+
+It was implemented the cache service strategy to reduce the number of calls to the api.
+
+It is also possible to ad a new ingredient.
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
