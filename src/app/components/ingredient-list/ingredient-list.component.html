@@ -1,3 +1,36 @@
-<p>
-  ingredient-list works!
-</p>
+<div class="container ingredient-list">
+  <div class="row">
+    <div class="col-sm-12">
+      <span id="spMainTitle" class="spTitle">List of Ingredients</span>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12">
+      <app-manage-ingredient (addIngredientEvent)="addNewIngredient($event)"></app-manage-ingredient>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+        <table class="table table-striped table-hover tbl-ingredients">
+          <thead>
+              <tr><th class="sub-title">Ingredient ({{ingredients.length}})</th></tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let ingredient of activeIngredientLists; trackBy: trackByFn">
+              <app-ingredient [ingredientName]="ingredient.ingredientName"></app-ingredient>
+            </tr>
+          </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <app-pagination 
+        [pageSize]="pageSize" 
+        [totalItems]="totalRecords" 
+        (pageChanged)="pageChanged($event)"></app-pagination>
+    </div>
+  </div>
+</div>

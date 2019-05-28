@@ -1,3 +1,7 @@
-<p>
-  manage-ingredient works!
-</p>
+<div class="manage-ingedrient">
+  <label class="label-align">Ingredient:</label>
+  <input type="text" class="element-align margin-15" id="txtIngredient" name="txtIngredient" [(ngModel)]="ingredient">
+  <button type="button" id="btnAdd" class="button-align btn btn-primary margin-15" (click)="addIngredient()" [disabled]="ingredient.length == 0">
+      <span class="glyphicon glyphicon-plus">&nbsp;Add Ingredient</span>
+  </button>
+</div>
