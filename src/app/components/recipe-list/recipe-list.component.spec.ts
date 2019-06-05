@@ -38,7 +38,7 @@ describe('RecipeListComponent', () => {
     button.nativeElement.click();
     const div: DebugElement = fixture.debugElement.query(By.css('div[id=rowFooter]'));
     let styleText = div.nativeElement.getAttribute("style");
-    expect(styleText).toEqual('display: none;');
+    expect(styleText).toEqual('display:none');
   });
 
   it('should display refresh div & hide top refresh button', fakeAsync(()=>{
@@ -47,6 +47,6 @@ describe('RecipeListComponent', () => {
     fixture.detectChanges();
     const div: DebugElement = fixture.debugElement.query(By.css('div[id=rowFooter]'));
     let styleText = div.nativeElement.getAttribute("style");
-    expect(styleText).toEqual('');
+    expect(styleText).toEqual('display:');
   }));
 });

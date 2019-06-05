@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 import { IRecipe } from 'src/app/core/models/interfaces';
 import { RecipeService } from 'src/app/services/recipe.service';
 import { SessionService } from 'src/app/services/session.service';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-recipe-list',
@@ -25,11 +26,12 @@ export class RecipeListComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private recipeService: RecipeService, private sessionService: SessionService) { }
 
   ngOnInit() {
-    let obj = document.getElementById('rowFooter');
-    obj.style.display = 'none';
+    //let obj = document.getElementById('rowFooter');
+    //obj.style.display = 'none';
+    document.querySelector('div[id=rowFooter]').setAttribute("style", "display:none");
     this.searchriteria = this.route.snapshot.paramMap.get('id');
     let page = this.sessionService.getVisited(this.searchriteria);
-    this.recipes$ = this.recipeService.getRecipes(this.searchriteria, page);
+    this.recipes$ = this.recipeService.getRecipes(this.searchriteria, page).pipe(map(items => items.sort(this.sortByName)));
     this.recipes$.subscribe( (items: IRecipe[])=> {
       if(items.length > 0){
         this.startTimer();
@@ -38,21 +40,23 @@ export class RecipeListComponent implements OnInit {
     });
   }
 
-  startTimer() {
-    let obj = document.getElementById('rowFooter');
-    obj.style.display = 'none';
+  sortByName(a: IRecipe, b: IRecipe): number {
+    if (a.title < b.title)
+      return -1;
+    if (a.title > b.title)
+      return 1;
+    return 0;
+  }
 
-    let objBtn = document.getElementById('btnRefresh2');
-    objBtn.style.display = '';
+  startTimer() {
+    document.querySelector('div[id=rowFooter]').setAttribute("style", "display:none");
+    document.querySelector('button[id=btnRefresh2]').setAttribute("style", "display:");
     this.myTimer = setTimeout(this.timerFunc, 10000);
   }
 
   timerFunc() {
-    let obj = document.getElementById('rowFooter');
-    obj.style.display = '';
-
-    let objBtn = document.getElementById('btnRefresh2');
-    objBtn.style.display = 'none';
+    document.querySelector('div[id=rowFooter]').setAttribute("style", "display:");
+    document.querySelector('button[id=btnRefresh2]').setAttribute("style", "display:none");
   }
 
   goBack(): void {
@@ -68,15 +72,12 @@ export class RecipeListComponent implements OnInit {
   }
 
   refreshData(reload: boolean): void {
-    let obj = document.getElementById('rowFooter');
-    obj.style.display = 'none';
-
-    let objBtn = document.getElementById('btnRefresh2');
-    objBtn.style.display = '';
+    document.querySelector('div[id=rowFooter]').setAttribute("style", "display:none");
+    document.querySelector('button[id=btnRefresh2]').setAttribute("style", "display:");
 
     if(reload){
       let page = this.sessionService.addVisited(this.searchriteria);
-      this.recipes$ = this.recipeService.getRecipes(this.searchriteria, page);
+      this.recipes$ = this.recipeService.getRecipes(this.searchriteria, page).pipe(map(items => items.sort(this.sortByName)));
     }
     this.startTimer();
   }
